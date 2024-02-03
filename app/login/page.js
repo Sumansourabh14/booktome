@@ -1,31 +1,36 @@
 "use client";
 import Button from "@/components/buttons/Button";
-import { signUpApi } from "@/services/globalApi";
-import { useState } from "react";
+import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
+import { GlobalContext } from "@/services/globalContext";
+import { useContext, useState } from "react";
 
-const SignUp = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignUpSubmit = async (e) => {
+  const { login } = useContext(GlobalContext);
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    const response = await signUpApi(email, password);
-    // console.log(response);
+    const response = await login(email, password);
+    console.log(response);
 
     if (response.status === 400) {
-      setError(response.data.message);
+      setError("Please give email and password");
+    } else if (response.status === 401) {
+      setError("Incorrect email or password");
     }
   };
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <h1 className="font-dmSerifText text-4xl">Sign up</h1>
+      <h1 className="font-dmSerifText text-4xl">Login</h1>
 
-      <form onSubmit={handleSignUpSubmit}>
-        <div className="flex flex-col gap-4">
+      <form onSubmit={handleLoginSubmit}>
+        <div className="flex flex-col gap-4 items-center">
           <div className="flex flex-col gap-1">
             <label>Email</label>
             <input
@@ -39,7 +44,7 @@ const SignUp = () => {
           <div className="flex flex-col gap-1">
             <label>Password</label>
             <input
-              placeholder="Create your password"
+              placeholder="Enter your password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -47,14 +52,16 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <Button text="Continue with email" />
+            <Button text="Login" />
           </div>
         </div>
       </form>
+
+      <AlreadyAccountLink destination={`/signup`} linkText="Sign up" />
 
       {!!error && <p className="text-red-500">{error}</p>}
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

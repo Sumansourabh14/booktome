@@ -1,3 +1,5 @@
+import TopAppBar from "@/components/pageComponents/TopAppBar";
+import { GlobalContextProvider } from "@/services/globalContext";
 import { DM_Serif_Text, Noto_Serif } from "next/font/google";
 import "./globals.css";
 
@@ -21,11 +23,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${notoSerif.variable} ${dmSerifText.variable} font-notoSerif`}
-      >
-        {children}
-      </body>
+      <GlobalContextProvider>
+        <body
+          className={`${notoSerif.variable} ${dmSerifText.variable} font-notoSerif`}
+        >
+          <TopAppBar />
+          {children}
+        </body>
+      </GlobalContextProvider>
     </html>
   );
 }
