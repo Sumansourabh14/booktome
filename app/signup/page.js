@@ -2,7 +2,6 @@
 import Button from "@/components/buttons/Button";
 import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
 import { signUpApi } from "@/services/globalApi";
-import Link from "next/link";
 import { useState } from "react";
 
 const SignUp = () => {
