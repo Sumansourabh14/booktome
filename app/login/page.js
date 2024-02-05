@@ -34,7 +34,7 @@ const Login = () => {
   }, [router, isAuthenticated]);
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-8 py-20">
       <h1 className="font-dmSerifText text-4xl">Login</h1>
 
       <form onSubmit={handleLoginSubmit}>

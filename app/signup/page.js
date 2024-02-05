@@ -2,7 +2,8 @@
 import LoadingButton from "@/components/buttons/LoadingButton";
 import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
 import { GlobalContext } from "@/services/globalContext";
-import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -10,7 +11,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { signUp, loading } = useContext(GlobalContext);
+  const { signUp, loading, isAuthenticated } = useContext(GlobalContext);
+  const router = useRouter();
 
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
@@ -24,8 +26,14 @@ const SignUp = () => {
     }
   };
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/profile");
+    }
+  }, [router, isAuthenticated]);
+
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-8 py-20">
       <h1 className="font-dmSerifText text-4xl">Sign up</h1>
 
       <form onSubmit={handleSignUpSubmit}>

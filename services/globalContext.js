@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
-import { getSelfUserApi, loginApi, signUpApi } from "./globalApi";
 import { useCookies } from "react-cookie";
+import { getSelfUserApi, loginApi, signUpApi } from "./globalApi";
 import { useRouter } from "next/navigation";
 
 export const GlobalContext = createContext();
@@ -67,6 +67,8 @@ export const GlobalContextProvider = ({ children }) => {
     removeCookie("token");
     setUser(null);
     setIsAuthenticated(false);
+
+    router.push("/login");
   };
 
   useEffect(() => {
