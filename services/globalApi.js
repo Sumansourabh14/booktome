@@ -1,9 +1,8 @@
 import { API_URL } from "@/config/config";
 import axios from "axios";
 
-export const signUpApi = async (email, password) => {
+export const signUpApi = async (name, email, password) => {
   try {
-    const name = "hero";
     const response = await axios.post(`${API_URL}/api/v1/register`, {
       name,
       email,
@@ -22,6 +21,19 @@ export const loginApi = async (email, password) => {
     const response = await axios.post(`${API_URL}/api/v1/auth/login`, {
       email,
       password,
+    });
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error.response;
+  }
+};
+
+export const getSelfUserApi = async (token) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/v1/self`, {
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     return response;

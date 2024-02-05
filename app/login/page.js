@@ -1,22 +1,24 @@
 "use client";
-import Button from "@/components/buttons/Button";
+import LoadingButton from "@/components/buttons/LoadingButton";
 import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
 import { GlobalContext } from "@/services/globalContext";
-import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { login } = useContext(GlobalContext);
+  const { login, loading, isAuthenticated } = useContext(GlobalContext);
+  const router = useRouter();
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     const response = await login(email, password);
-    console.log(response);
+    // console.log(response);
 
     if (response.status === 400) {
       setError("Please give email and password");
@@ -24,6 +26,12 @@ const Login = () => {
       setError("Incorrect email or password");
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/profile");
+    }
+  }, [router, isAuthenticated]);
 
   return (
     <div className="flex flex-col items-center gap-8">
@@ -52,7 +60,7 @@ const Login = () => {
             />
           </div>
           <div className="mt-4">
-            <Button text="Login" />
+            <LoadingButton text="Login" loading={loading} />
           </div>
         </div>
       </form>

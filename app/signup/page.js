@@ -1,19 +1,22 @@
 "use client";
-import Button from "@/components/buttons/Button";
+import LoadingButton from "@/components/buttons/LoadingButton";
 import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
-import { signUpApi } from "@/services/globalApi";
-import { useState } from "react";
+import { GlobalContext } from "@/services/globalContext";
+import { useContext, useState } from "react";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const { signUp, loading } = useContext(GlobalContext);
 
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    const response = await signUpApi(email, password);
+    const response = await signUp(name, email, password);
     // console.log(response);
 
     if (response.status === 400) {
@@ -27,6 +30,16 @@ const SignUp = () => {
 
       <form onSubmit={handleSignUpSubmit}>
         <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <label>Name</label>
+            <input
+              placeholder="Enter your name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="bg-gray-100 px-2 py-1"
+            />
+          </div>
           <div className="flex flex-col gap-1">
             <label>Email</label>
             <input
@@ -48,7 +61,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <Button text="Continue with email" />
+            <LoadingButton text="Continue with email" loading={loading} />
           </div>
         </div>
       </form>
