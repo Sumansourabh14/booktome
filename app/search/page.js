@@ -5,8 +5,6 @@ import { GlobalContext } from "@/services/globalContext";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import data from "../../config/searchData.json";
-import Image from "next/image";
 
 const Search = () => {
   const [result, setResult] = useState([]);
