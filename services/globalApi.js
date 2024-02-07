@@ -38,7 +38,7 @@ export const getSelfUserApi = async (token) => {
 
     return response;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return error.response;
   }
 };

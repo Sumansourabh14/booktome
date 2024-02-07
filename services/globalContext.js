@@ -1,8 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { getSelfUserApi, loginApi, signUpApi } from "./globalApi";
-import { useRouter } from "next/navigation";
+import { searchApi } from "./openLibraryApi";
 
 export const GlobalContext = createContext();
 
@@ -10,6 +11,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [cookie, setCookie, removeCookie] = useCookies();
   const [token, setToken] = useState(cookie.token);
   const [loading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
@@ -62,6 +64,19 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
+  const searchOpenLibrary = async (query) => {
+    try {
+      setSearchLoading(true);
+      const response = await searchApi(query);
+
+      setSearchLoading(false);
+      return response;
+    } catch (error) {
+      console.error(error);
+      setSearchLoading(false);
+    }
+  };
+
   const logout = async () => {
     setToken(null);
     removeCookie("token");
@@ -86,6 +101,8 @@ export const GlobalContextProvider = ({ children }) => {
         logout,
         token,
         user,
+        searchLoading,
+        searchOpenLibrary,
       }}
     >
       {children}
