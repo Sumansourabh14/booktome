@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const SearchInput = () => {
   const search = useSearchParams()?.get("q");
@@ -13,10 +13,6 @@ const SearchInput = () => {
 
     router.push(`/search?q=${encodeSearch}`);
   };
-
-  useEffect(() => {
-    console.log(search, query);
-  }, []);
 
   return (
     <form onSubmit={handleSearch}>

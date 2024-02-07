@@ -14,9 +14,11 @@ const TopAppBar = () => {
 
   return (
     isPath && (
-      <div className="bg-zinc-700 text-white px-8 py-8">
+      <div className="bg-zinc-900 text-white px-8 py-8">
         <nav className="flex justify-between">
-          <Link href={`/`}>booktome.</Link>
+          <Link href={`/`} className="text-2xl font-dmSerifText">
+            booktome.
+          </Link>
           <div className="flex gap-6">
             <Link href={`/search`}>
               <FontAwesomeIcon icon={faSearch} />
