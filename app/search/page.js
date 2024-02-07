@@ -19,6 +19,7 @@ const Search = () => {
 
   useEffect(() => {
     let mounted = true;
+    setResult([]);
     const searchData = async () => {
       const response = await searchOpenLibrary(encodedSearchQuery);
 
@@ -27,23 +28,23 @@ const Search = () => {
       }
     };
 
-    // searchData();
+    searchData();
 
     return () => {
       mounted = false;
     };
   }, [encodedSearchQuery]);
 
-  // useEffect(() => {
-  //   console.log(result);
-  // }, [result]);
-
-  const { docs } = data;
-  const work = docs.slice(0, 20);
-
   useEffect(() => {
-    console.log(work);
-  }, [work]);
+    console.log(result);
+  }, [result]);
+
+  // const { docs } = data;
+  // const work = docs.slice(0, 20);
+
+  // useEffect(() => {
+  //   console.log(work);
+  // }, [work]);
 
   return (
     <div>
@@ -74,11 +75,20 @@ const Search = () => {
           </div>
         )}
 
-        {!!work && (
-          <div className="flex flex-col gap-8 py-8">
-            {work.map((book) => (
+        {!!result && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 py-8">
+            {result.map((book) => (
               <div key={book.key} className="flex gap-4">
-                <div
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+                  style={{
+                    width: "120px",
+                    objectFit: "cover",
+                  }}
+                  alt={`cover image of ${book.title}`}
+                />
+                {/* <div
                   style={{
                     width: "120px",
                     height: "180px",
@@ -91,10 +101,14 @@ const Search = () => {
                     style={{ objectFit: "cover" }}
                     alt={`cover image of ${book.title}`}
                   />
-                </div>
-                <div>
-                  <p>{book.title}</p>
-                  <p>{book.author_name[0]}</p>
+                </div> */}
+                <div className="flex flex-col gap-2">
+                  <p className="font-light text-xl">{book.title}</p>
+                  {book?.author_name && (
+                    <p className="font-light font-dmSerifText">
+                      {book?.author_name[0]}
+                    </p>
+                  )}
                   <p>{book.ratings_average}</p>
                 </div>
               </div>

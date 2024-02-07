@@ -18,7 +18,7 @@ export const fetchBooksBySubjectsApi = async (subject) => {
 export const searchApi = async (query) => {
   try {
     const response = await axios.get(
-      `${OPEN_LIBRARY_API_URL}/search.json?q=${query}`
+      `${OPEN_LIBRARY_API_URL}/search.json?q=${query}&limit=10&offset=0`
     );
 
     console.log(response);
