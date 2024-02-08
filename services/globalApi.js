@@ -1,4 +1,4 @@
-import { API_URL } from "@/config/config";
+import { API_URL, RECITE_API_URL } from "@/config/config";
 import axios from "axios";
 
 export const signUpApi = async (name, email, password) => {
@@ -42,3 +42,16 @@ export const getSelfUserApi = async (token) => {
     return error.response;
   }
 };
+
+export const getReciteQuoteApi = async () => {
+  try {
+    const response = await axios.get(`${RECITE_API_URL}/random/quote`);
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error.response;
+  }
+};
+
+getReciteQuoteApi();

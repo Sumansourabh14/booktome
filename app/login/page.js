@@ -2,6 +2,8 @@
 import LoadingButton from "@/components/buttons/LoadingButton";
 import AlreadyAccountLink from "@/components/pageComponents/AlreadyAccountLink";
 import { GlobalContext } from "@/services/globalContext";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
@@ -35,6 +37,13 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center gap-8 py-20">
+      <FontAwesomeIcon
+        icon={faLeftLong}
+        size="xl"
+        className="absolute left-10 top-10 cursor-pointer"
+        onClick={() => router.back()}
+      />
+
       <h1 className="font-dmSerifText text-4xl">Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
@@ -65,7 +74,11 @@ const Login = () => {
         </div>
       </form>
 
-      <AlreadyAccountLink destination={`/signup`} linkText="Sign up" />
+      <AlreadyAccountLink
+        text={`Don't have an account?`}
+        destination={`/signup`}
+        linkText="Sign up"
+      />
 
       {!!error && <p className="text-red-500">{error}</p>}
     </div>

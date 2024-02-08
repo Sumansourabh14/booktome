@@ -2,6 +2,8 @@
 import SearchInput from "@/components/inputComponents/SearchInput";
 import { suggestions } from "@/content/searchContent";
 import { GlobalContext } from "@/services/globalContext";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -67,8 +69,13 @@ const Search = () => {
 
       <div className="max-w-7xl m-auto px-8">
         {searchLoading && (
-          <div>
-            <p>Loading...</p>
+          <div className="text-center py-6">
+            <FontAwesomeIcon
+              icon={faCircleNotch}
+              size="2xl"
+              className="animate-spin"
+            />
+            <p className="mt-4">Hold on! Books are being flown here...</p>
           </div>
         )}
 

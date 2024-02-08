@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         notoSerif: ["var(--font-noto-serif)"],
         dmSerifText: ["var(--font-dm-serif-text)"],
+        robotoText: ["var(--font-roboto-serif)"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

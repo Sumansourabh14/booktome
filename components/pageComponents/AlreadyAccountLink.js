@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-const AlreadyAccountLink = ({ destination, linkText }) => {
+const AlreadyAccountLink = ({ destination, linkText, text }) => {
   return (
     <p>
-      Already have an account?{" "}
+      {text}{" "}
       <Link href={destination} className="underline text-blue-400">
         {linkText}
       </Link>
