@@ -9,7 +9,7 @@ export const RandomQuote = () => {
         <p className="text-xl md:text-3xl font-extralight leading-7 md:leading-10 max-w-[75%]">
           {quote.quote}
         </p>
-        <p className="font-dmSerifText text-lg md:text-xl">
+        <p className="font-dmSerifText text-lg md:text-xl px-14">
           - {quote.author}, {quote.book}
         </p>
       </div>
