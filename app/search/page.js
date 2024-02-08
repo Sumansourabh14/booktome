@@ -46,15 +46,12 @@ const Search = () => {
 
   return (
     <div>
-      <div className="px-10 py-20 bg-gray-100">
+      <div className="px-10 pt-24 lg:pt-36 pb-14 lg:pb-20 bg-gray-100">
         <h1 className="text-5xl font-dmSerifText font-bold text-center mb-10">
           Search booktome
         </h1>
         <SearchInput />
-      </div>
-
-      <div className="px-8">
-        <div className="flex flex-col items-center py-4">
+        <div className="flex flex-col items-center mt-6">
           <h3 className="text-lg font-bold mb-2">Suggestions</h3>
           <ul className="flex justify-center gap-4">
             {suggestions.map((suggestion) => (
@@ -66,7 +63,9 @@ const Search = () => {
             ))}
           </ul>
         </div>
+      </div>
 
+      <div className="max-w-7xl m-auto px-8">
         {searchLoading && (
           <div>
             <p>Loading...</p>
