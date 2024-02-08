@@ -26,7 +26,16 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <p>Copyright &copy; {year}</p>
+        <p className="text-sm font-light">
+          Copyright &copy; {year} | Built by{" "}
+          <Link
+            href={`https://sumansourabh.netlify.app`}
+            target="_blank"
+            className="underline hover:underline-offset-4"
+          >
+            Suman Sourabh
+          </Link>
+        </p>
       </div>
     </div>
   );

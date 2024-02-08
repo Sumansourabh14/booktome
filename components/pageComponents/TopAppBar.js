@@ -14,7 +14,7 @@ const TopAppBar = () => {
 
   return (
     isPath && (
-      <div className="bg-white text-black px-8 py-4 fixed w-full">
+      <div className="backdrop-blur-lg bg-black/10 text-black px-8 py-4 fixed w-full">
         <nav className="flex justify-between items-center">
           <Link href={`/`} className="text-2xl font-dmSerifText">
             booktome.
