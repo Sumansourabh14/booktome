@@ -65,7 +65,11 @@ const Login = () => {
         </div>
       </form>
 
-      <AlreadyAccountLink destination={`/signup`} linkText="Sign up" />
+      <AlreadyAccountLink
+        text={`Don't have an account?`}
+        destination={`/signup`}
+        linkText="Sign up"
+      />
 
       {!!error && <p className="text-red-500">{error}</p>}
     </div>
