@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <p className="text-sm font-light">
+        <p className="text-sm font-light text-center">
           Copyright &copy; {year} | Built by{" "}
           <Link
             href={`https://sumansourabh.netlify.app`}
