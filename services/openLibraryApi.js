@@ -28,3 +28,29 @@ export const searchApi = async (query) => {
     return error.response;
   }
 };
+
+export const getBookDetailsApi = async (workId) => {
+  try {
+    const response = await axios.get(
+      `${OPEN_LIBRARY_API_URL}/works/${workId}.json`
+    );
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error.response;
+  }
+};
+
+export const getResourceApi = async (resource) => {
+  try {
+    const response = await axios.get(`${OPEN_LIBRARY_API_URL}${resource}.json`);
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error.response;
+  }
+};
