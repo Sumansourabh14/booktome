@@ -1,8 +1,8 @@
+import Footer from "@/components/pageComponents/Footer";
 import TopAppBar from "@/components/pageComponents/TopAppBar";
 import { GlobalContextProvider } from "@/services/globalContext";
-import { DM_Serif_Text, Noto_Serif, Roboto_Serif } from "next/font/google";
+import { DM_Serif_Text, Noto_Serif, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/pageComponents/Footer";
 
 // The following import prevents a Font Awesome icon server-side rendering bug,
 // where the icons flash from a very large icon down to a properly sized one:
@@ -15,17 +15,15 @@ const dmSerifText = DM_Serif_Text({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-dm-serif-text",
-  display: "swap",
 });
 const notoSerif = Noto_Serif({
   subsets: ["latin"],
   variable: "--font-noto-serif",
   display: "swap",
 });
-const robotoSerif = Roboto_Serif({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-roboto-serif",
-  display: "swap",
+  variable: "--font-source-serif",
 });
 
 export const metadata = {
@@ -38,7 +36,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <GlobalContextProvider>
         <body
-          className={`${notoSerif.variable} ${dmSerifText.variable} ${robotoSerif.variable} font-robotoText`}
+          className={`${notoSerif.variable} ${dmSerifText.variable} ${sourceSerif.variable} font-sourceSerif`}
         >
           <TopAppBar />
           {children}
