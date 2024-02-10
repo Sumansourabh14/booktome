@@ -84,14 +84,16 @@ const Search = () => {
             {result.map((book) => (
               <div key={book.key} className="flex gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                  style={{
-                    width: "120px",
-                    objectFit: "cover",
-                  }}
-                  alt={`cover image of ${book.title}`}
-                />
+                <Link href={`/book/${book.key.split("/")[2]}`}>
+                  <img
+                    src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+                    style={{
+                      width: "120px",
+                      objectFit: "cover",
+                    }}
+                    alt={`cover image of ${book.title}`}
+                  />
+                </Link>
                 {/* <div
                   style={{
                     width: "120px",
@@ -107,11 +109,15 @@ const Search = () => {
                   />
                 </div> */}
                 <div className="flex flex-col gap-2">
-                  <p className="font-light text-xl">{book.title}</p>
+                  <Link href={`/book/${book.key.split("/")[2]}`}>
+                    <p className="font-light text-xl">{book.title}</p>
+                  </Link>
                   {book?.author_name && (
-                    <p className="font-light font-dmSerifText">
-                      {book?.author_name[0]}
-                    </p>
+                    <Link href={`/author/${book.author_key[0]}`}>
+                      <p className="font-light font-dmSerifText">
+                        {book?.author_name[0]}
+                      </p>
+                    </Link>
                   )}
                   <p>{book.ratings_average}</p>
                 </div>

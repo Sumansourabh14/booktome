@@ -14,3 +14,6 @@
 
 - For search page inspiration: https://dribbble.com/search/chatgpt
 - [Next.js Image Optimization: A Guide for Web Developers](https://imagekit.io/blog/nextjs-image-optimization/)
+
+
+- https://tailwindflex.com/@prajwal/read-more-show-more-button-with-hide-button
