@@ -1,5 +1,6 @@
 "use client";
 import { getBookDetailsApi, getResourceApi } from "@/services/openLibraryApi";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -46,9 +47,9 @@ const BookDetails = () => {
     };
   }, [authorResource]);
 
-  useEffect(() => {
-    console.log(details, author);
-  }, [details, author]);
+  // useEffect(() => {
+  //   console.log(details);
+  // }, [details]);
 
   return (
     <div>
@@ -70,11 +71,19 @@ const BookDetails = () => {
                 {details.title}
               </h1>
               {!!author && (
-                <p className="text-lg md:text-xl font-medium md:font-semibold">
-                  {author}
-                </p>
+                <Link
+                  href={`/author/${
+                    details.authors[0].author.key.split("/")[2]
+                  }`}
+                >
+                  <p className="text-lg md:text-xl font-medium md:font-semibold">
+                    {author}
+                  </p>
+                </Link>
               )}
-              <p className="leading-7 max-w-[700px]">{details.description}</p>
+              <p className="leading-7 max-w-[700px]">
+                {details.description?.value || details.description}
+              </p>
               {details?.first_publish_date && (
                 <p className="text-gray-700">
                   First published in {details.first_publish_date}

@@ -113,9 +113,11 @@ const Search = () => {
                     <p className="font-light text-xl">{book.title}</p>
                   </Link>
                   {book?.author_name && (
-                    <p className="font-light font-dmSerifText">
-                      {book?.author_name[0]}
-                    </p>
+                    <Link href={`/author/${book.author_key[0]}`}>
+                      <p className="font-light font-dmSerifText">
+                        {book?.author_name[0]}
+                      </p>
+                    </Link>
                   )}
                   <p>{book.ratings_average}</p>
                 </div>

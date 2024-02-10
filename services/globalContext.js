@@ -27,7 +27,7 @@ export const GlobalContextProvider = ({ children }) => {
 
       return response;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setIsAuthenticated(false);
     }
   };
@@ -46,7 +46,7 @@ export const GlobalContextProvider = ({ children }) => {
       setLoading(false);
       return response;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setLoading(false);
     }
   };
@@ -59,7 +59,7 @@ export const GlobalContextProvider = ({ children }) => {
       setLoading(false);
       return response;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setLoading(false);
     }
   };
@@ -72,7 +72,7 @@ export const GlobalContextProvider = ({ children }) => {
       setSearchLoading(false);
       return response;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setSearchLoading(false);
     }
   };
