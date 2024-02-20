@@ -68,3 +68,15 @@ export const getAuthor = async (id) => {
     return error.response;
   }
 };
+
+export const getBooksByCategoriesApi = async (endPoint) => {
+  try {
+    const response = await axios.get(`${endPoint}.json?limit=12&offset=0`);
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error.response;
+  }
+};

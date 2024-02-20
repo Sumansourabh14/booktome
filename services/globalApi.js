@@ -45,7 +45,7 @@ export const getSelfUserApi = async (token) => {
 
 export const getReciteQuoteApi = async () => {
   try {
-    const response = await axios.get(`${RECITE_API_URL}/random/quote`);
+    const response = await axios.get(`${RECITE_API_URL}/random/quote-from-db`);
 
     return response;
   } catch (error) {

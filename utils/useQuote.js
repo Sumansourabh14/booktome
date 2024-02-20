@@ -2,17 +2,17 @@ import { getReciteQuoteApi } from "@/services/globalApi";
 import { useEffect, useState } from "react";
 
 const useQuote = () => {
-  const [quote, setQuote] = useState({});
+  const [quote, setQuote] = useState(null);
 
   useEffect(() => {
     let mounted = true;
 
     const fetchQuote = async () => {
       const response = await getReciteQuoteApi();
-      //   console.log(response);
+      // console.log(response);
 
       if (response) {
-        setQuote(response.data.data);
+        setQuote(response.data);
       }
     };
 
