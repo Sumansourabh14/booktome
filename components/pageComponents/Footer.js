@@ -9,7 +9,10 @@ const Footer = () => {
     <div className="px-10 py-20 bg-zinc-900 text-white">
       <div className="flex flex-col gap-4 items-center">
         <div className="flex justify-between items-center w-full">
-          <Link href={`/`} className="text-2xl font-dmSerifText">
+          <Link
+            href={`https://booktome.vercel.app/`}
+            className="text-2xl font-dmSerifText"
+          >
             booktome.
           </Link>
           <div>

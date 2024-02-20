@@ -16,7 +16,10 @@ const TopAppBar = () => {
     isPath && (
       <div className="backdrop-blur-lg bg-black/10 text-black px-8 py-4 fixed w-full">
         <nav className="flex justify-between items-center">
-          <Link href={`/`} className="text-2xl font-dmSerifText">
+          <Link
+            href={`https://booktome.vercel.app`}
+            className="text-2xl font-dmSerifText"
+          >
             booktome.
           </Link>
           <div className="flex gap-6 items-center">
