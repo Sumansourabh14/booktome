@@ -1,3 +1,4 @@
+import { LIVE_API_URL } from "@/config/config";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -9,10 +10,7 @@ const Footer = () => {
     <div className="px-10 py-20 bg-zinc-900 text-white">
       <div className="flex flex-col gap-4 items-center">
         <div className="flex justify-between items-center w-full">
-          <Link
-            href={`https://booktome.vercel.app/`}
-            className="text-2xl font-dmSerifText"
-          >
+          <Link href={LIVE_API_URL} className="text-2xl font-dmSerifText">
             booktome.
           </Link>
           <div>

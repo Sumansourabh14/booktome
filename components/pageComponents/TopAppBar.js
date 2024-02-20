@@ -1,4 +1,5 @@
 "use client";
+import { LIVE_API_URL } from "@/config/config";
 import { GlobalContext } from "@/services/globalContext";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,10 +17,7 @@ const TopAppBar = () => {
     isPath && (
       <div className="backdrop-blur-lg bg-black/10 text-black px-8 py-4 fixed w-full">
         <nav className="flex justify-between items-center">
-          <Link
-            href={`https://booktome.vercel.app`}
-            className="text-2xl font-dmSerifText"
-          >
+          <Link href={LIVE_API_URL} className="text-2xl font-dmSerifText">
             booktome.
           </Link>
           <div className="flex gap-6 items-center">
