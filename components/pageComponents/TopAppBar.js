@@ -24,6 +24,7 @@ const TopAppBar = () => {
             <Link href={`/search`}>
               <FontAwesomeIcon icon={faSearch} size="xl" />
             </Link>
+            <Link href={`/browse`}>Browse</Link>
 
             {isAuthenticated ? (
               <div className="flex gap-6">

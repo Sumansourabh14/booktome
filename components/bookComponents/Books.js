@@ -28,19 +28,19 @@ const Books = ({ title, url }) => {
     <div>
       {!!books ? (
         <div>
-          <h2 className="mb-8 text-xl">{title}</h2>
-          <div className="flex gap-6">
+          <h2 className="mb-4 text-xl">{title}</h2>
+          <div className="flex gap-2">
             {books.map((book) => (
-              <div key={book.key}>
+              <div key={book.key} className="flex flex-col gap-2 w-[300px]">
                 <img
                   src={`${OPEN_LIBRARY_COVER_API_URL}/${
                     book?.cover_id || book?.cover_i
                   }-L.jpg`}
-                  className="h-[200px]"
+                  className="h-[220px]"
                   style={{ objectFit: "cover" }}
                   alt={book.title}
                 />
-                <h3>{book.title}</h3>
+                <h3 className="font-semibold">{book.title}</h3>
               </div>
             ))}
           </div>
